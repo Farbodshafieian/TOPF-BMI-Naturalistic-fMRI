@@ -1,0 +1,72 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# IDE / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Participant-level tabular data
+*.csv
+*.tsv
+*.xlsx
+*.xls
+
+# NumPy / scientific data
+*.npy
+*.npz
+*.mat
+*.h5
+*.hdf5
+
+# Neuroimaging data
+*.nii
+*.nii.gz
+*.dtseries.nii
+*.ptseries.nii
+*.dlabel.nii
+*.dscalar.nii
+*.pconn.nii
+
+# Generated models / serialized objects
+*.pkl
+*.pickle
+*.joblib
+*.sav
+
+# Generated figures
+*.png
+*.jpg
+*.jpeg
+*.tif
+*.tiff
+*.svg
+
+# Logs
+*.log
+logs/
+
+# Local data and output directories
+data/
+outputs/
+output/
+local_data/
+
+# Keep only the documentation placeholder in results/
+results/*
+!results/README.md
+
+# HCP-specific participant/restricted files
+Subjects_Info.csv
+RESTRICTED_7T.csv
+RMSFD_subjects.csv
+SubjectID*.txt
+subjects.txt
+famid.txt
+FamilyIDinfo.csv
+WordNet_MOVIE1_CC1.txt
