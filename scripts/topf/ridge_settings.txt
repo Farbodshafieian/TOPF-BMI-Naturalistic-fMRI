@@ -1,0 +1,8 @@
+{
+  "problem_type": "regression",
+    "ridge__alpha": [
+        500, 750, 1000, 1250,
+        1500, 1750, 2000
+    ],
+  "metric_list": ["pearson", "spearman", "r2", "mean_absolute_error"]
+}

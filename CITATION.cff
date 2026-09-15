@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite the accompanying manuscript and the original TOPF work."
+title: "TOPF-BMI-Naturalistic-fMRI"
+type: software
+authors:
+  - family-names: "Shafieian"
+    given-names: "Farbod"
+repository-code: "https://github.com/Farbodshafieian/TOPF-BMI-Naturalistic-fMRI"
