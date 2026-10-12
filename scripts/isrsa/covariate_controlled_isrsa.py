@@ -59,14 +59,25 @@ def upper_triangle(matrix: np.ndarray) -> np.ndarray:
     return matrix[np.triu_indices_from(matrix, k=1)]
 
 
-def nearest_neighbor_similarity(values: np.ndarray) -> np.ndarray:
-    ranked = rankdata(np.asarray(values, dtype=float), method="average")
-    distance = pairwise_distances(ranked.reshape(-1, 1), metric="euclidean")
-    maximum = np.nanmax(distance)
-    if maximum == 0:
-        raise ValueError("BMI has no between-subject variation.")
+def rank_similarity_matrix(values: np.ndarray) -> np.ndarray:
+    """Create a pairwise similarity matrix from ranked values."""
+    
+    ranked = rankdata(
+        np.asarray(values, dtype=float),
+        method="average"
+    )
+
+    distance = pairwise_distances(
+        ranked.reshape(-1, 1),
+        metric="euclidean"
+    )
+
+    if np.nanmax(distance) == 0:
+        raise ValueError("Values have no between-subject variation.")
+
     similarity = 1.0 - distance
     np.fill_diagonal(similarity, 1.0)
+
     return similarity
 
 
@@ -150,8 +161,8 @@ def main() -> None:
         pheno = pheno.loc[valid].reset_index(drop=True)
         bmi, age, sex, rmsfd = bmi[valid], age[valid], sex[valid], rmsfd[valid]
 
-    bmi_similarity = nearest_neighbor_similarity(bmi)
-    bmi_vector = upper_triangle(bmi_similarity)
+    bmi_similarity = rank_similarity_matrix(bmi)
+    rmsfd_similarity = rank_similarity_matrix(rmsfd)
 
     covariate_vectors = np.column_stack(
         [
