@@ -65,7 +65,7 @@ def nearest_neighbor_similarity(values: np.ndarray) -> np.ndarray:
     maximum = np.nanmax(distance)
     if maximum == 0:
         raise ValueError("BMI has no between-subject variation.")
-    similarity = 1.0 - distance / maximum
+    similarity = 1.0 - distance
     np.fill_diagonal(similarity, 1.0)
     return similarity
 
